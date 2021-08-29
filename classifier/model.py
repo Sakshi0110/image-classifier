@@ -16,15 +16,16 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.InputLayer(input_shape=(64, 64, 3), name='Block0-Input'),
     # Pad, Convolve, Batch Normalize, ReLU
     tf.keras.layers.ZeroPadding2D((3, 3), name='Block1-Padding'),
-    tf.keras.layers.Conv2D(32, (3, 3), strides = (1, 1), name='Block1-Convolution'),
-    tf.keras.layers.BatchNormalization(axis = 3, name = 'Block1-Normalization'),
-    tf.keras.layers.Activation('relu', name = 'Block1-Activation'),
+    tf.keras.layers.Conv2D(32, (3, 3), strides=(1, 1), name='Block1-Convolution'),
+    tf.keras.layers.BatchNormalization(axis=3, name='Block1-Normalization'),
+    tf.keras.layers.Activation('relu', name='Block1-Activation'),
     # Convolve, Batch Normalize, ReLU, Pool
-    tf.keras.layers.Conv2D(32, (3, 3), strides = (1, 1), name = 'Block2-Convolution'),
-    tf.keras.layers.BatchNormalization(axis = 3, name = 'Block2-Normalization'),
-    tf.keras.layers.Activation('relu', name = 'Block2-Activation'),
-    tf.keras.layers.MaxPooling2D((2, 2), name= 'Block2-MaxPool'),
+    tf.keras.layers.Conv2D(32, (3, 3), strides=(1, 1), name='Block2-Convolution'),
+    tf.keras.layers.BatchNormalization(axis=3, name='Block2-Normalization'),
+    tf.keras.layers.Activation('relu', name='Block2-Activation'),
+    tf.keras.layers.MaxPooling2D((2, 2), name='Block2-MaxPool'),
     # Flatten, Fully Connected, Sigmoid
-    tf.keras.layers.Flatten(name = 'Block3-Flatten'),
+    tf.keras.layers.Flatten(name='Block3-Flatten'),
     tf.keras.layers.Dense(1, activation='sigmoid', name='Block3-Dense'),
 ])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
